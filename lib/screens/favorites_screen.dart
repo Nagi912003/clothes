@@ -11,25 +11,29 @@ class FavoritesScreen extends StatelessWidget {
     final favoritesData = Provider.of<Favorites>(context);
     return SafeArea(
       child: Scaffold(
-        body: ListView(
-          children: favoritesData.favorites
-              .map((e) => Stack(
+        body: ListView.builder(
+          itemCount: favoritesData.favorites.length,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Stack(
                 children: [
                   mainImage(
-                        context: context,
-                        selectedHat: e.selectedHat,
-                        selectedAccessory: e.selectedAccessories,
-                        selectedShirt: e.selectedShirt,
-                        selectedTshirt: e.selectedTshirt,
-                        selectedPants: e.selectedPants,
-                        selectedShoes: e.selectedShoes,
-                      ),
+                    context: context,
+                    widthXHeight: MediaQuery.of(context).size.width - 10,
+                    selectedHat: favoritesData.favorites.elementAt(index).selectedHat,
+                    selectedAccessory: favoritesData.favorites.elementAt(index).selectedAccessories,
+                    selectedShirt: favoritesData.favorites.elementAt(index).selectedShirt,
+                    selectedTshirt: favoritesData.favorites.elementAt(index).selectedTshirt,
+                    selectedPants: favoritesData.favorites.elementAt(index).selectedPants,
+                    selectedShoes: favoritesData.favorites.elementAt(index).selectedShoes,
+                  ),
                   Positioned(
                     top: 20,
                     right: 20,
                     child: IconButton(
                       onPressed: () {
-                        favoritesData.removeFavorite(e);
+                        favoritesData.removeFavorite(index);
                       },
                       icon: Icon(
                         Icons.delete,
@@ -39,10 +43,10 @@ class FavoritesScreen extends StatelessWidget {
                     ),
                   ),
                 ],
-              ))
-              .toList(),
-        ),
-      ),
+              ),
+            );
+          },
+      ),),
     );
   }
 }

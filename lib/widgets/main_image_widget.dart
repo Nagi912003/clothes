@@ -4,6 +4,7 @@ import '../models/piece.dart';
 
 Widget mainImage({
   required BuildContext context,
+  required double widthXHeight,
   Piece? selectedTshirt,
   Piece? selectedPants,
   Piece? selectedShoes,
@@ -12,8 +13,8 @@ Widget mainImage({
   Piece? selectedShirt,
 }) {
   return SizedBox(
-    width: MediaQuery.sizeOf(context).width,
-    height: MediaQuery.sizeOf(context).width,
+    width: widthXHeight,
+    height: widthXHeight,
     child: Card(
       child: Stack(
         children: [

@@ -46,6 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     mainImage(
                         context: context,
+                        widthXHeight: MediaQuery.sizeOf(context).width,
                         selectedAccessory: selectedAccessory,
                         selectedHat: selectedHat,
                         selectedPants: selectedPants,

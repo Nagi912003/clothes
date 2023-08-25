@@ -32,12 +32,13 @@ class Piece {
   List<MyColor> colors;
   Category category;
   Brightness brightness;
-  String description = '';
-  double price;
+  // String description = '';
+  // double price;
   Fit fit;
   New isNew;
   OutDoors outDoors;
   ForWeather forWeather;
+  bool isAvailable = true;
 
 
   Piece({
@@ -46,11 +47,28 @@ class Piece {
     required this.colors,
     required this.category,
     this.brightness = Brightness.light,
-    this.description = '',
-    this.price = 0.0,
+    // this.description = '',
+    // this.price = 0.0,
     this.fit = Fit.regular,
     this.isNew = New.old,
     this.outDoors = OutDoors.outdoor,
     this.forWeather = ForWeather.both,
+    this.isAvailable = true,
   });
+  toMap() {
+    return {
+      'id': id,
+      'image': image,
+      'colors': colors.map((e) => e.index).toList(),
+      'category': category.index,
+      'brightness': brightness.index,
+      // 'description': description,
+      // 'price': price,
+      'fit': fit.index,
+      'isNew': isNew.index,
+      'outDoors': outDoors.index,
+      'forWeather': forWeather.index,
+      'isAvailable': isAvailable,
+    };
+  }
 }

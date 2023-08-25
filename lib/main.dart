@@ -1,5 +1,6 @@
 import 'package:cloths/providers/favorites.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
 import 'providers/clothes.dart';
@@ -8,7 +9,16 @@ import 'providers/clothes_selector_provider.dart';
 
 import 'screens/home_screen.dart';
 
-void main() {
+void main() async{
+
+  WidgetsFlutterBinding.ensureInitialized();
+  //hive is a no-sql database
+  await Hive.initFlutter();
+  //register adapter
+  //Hive.registerAdapter(ClothesAdapter());
+  //open box
+  await Hive.openBox('clothes');
+  //run app
   runApp(const MyApp());
 }
 
