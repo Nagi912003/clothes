@@ -11,6 +11,9 @@ class FavoritesScreen extends StatelessWidget {
     final favoritesData = Provider.of<Favorites>(context);
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Favorites'),
+        ),
         body: ListView.builder(
           itemCount: favoritesData.favorites.length,
           itemBuilder: (context, index) {

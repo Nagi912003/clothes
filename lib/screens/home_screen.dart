@@ -37,6 +37,12 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         body: Stack(
           children: [
+            // title
+            Positioned(
+              top: 10,
+              left: 70,
+              child: const Text('My cupboard', style: TextStyle(fontSize: 28)),
+            ),
             // main image
             Align(
               alignment: const Alignment(0, -0.7),
@@ -78,15 +84,17 @@ class _HomeScreenState extends State<HomeScreen> {
                               .addFavorite(favoriteItem)) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
-                                backgroundColor: Theme.of(context).colorScheme.secondary,
+                                backgroundColor:
+                                    Theme.of(context).colorScheme.secondary,
                                 content: Text('Added to favorites'),
                                 duration: Duration(seconds: 1),
                               ),
                             );
-                          }else{
+                          } else {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
-                                backgroundColor: Theme.of(context).colorScheme.error,
+                                backgroundColor:
+                                    Theme.of(context).colorScheme.error,
                                 content: Text('Please select all items'),
                                 duration: Duration(seconds: 1),
                               ),
@@ -221,8 +229,7 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             child: Card(
               color: selectorData.isPieceSelected(list[index])
-                  ? Theme.of(context)
-                      .colorScheme.onBackground.withOpacity(0.8)
+                  ? Theme.of(context).colorScheme.onBackground.withOpacity(0.8)
                   : Colors.transparent,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
